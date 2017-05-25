@@ -1,0 +1,13 @@
+{% extends "layout_mj012.html" %}
+{% block body %}
+
+<h2>{{entries[0][3]}}</h2>
+
+<ul class="entries">
+  {% for entry in entries %}
+    <li>{{ entry[0] }} - {{ entry[1]|safe }} $ {{ entry[2]|safe }}</li>
+  {% else %}
+    <li><em>Unbelievable.  No entries here so far</em></li>
+  {% endfor %}
+  </ul>
+{% endblock %}

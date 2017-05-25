@@ -1,0 +1,54 @@
+{% extends "layout_mj012.html" %}
+{% block body %}
+
+<ul class="entries">
+  {% for entry in entries %}
+    <li><a href="/company/{{ entry.id }}"> {{ entry.id }} - {{ entry.title|safe }}</a></li>
+  {% else %}
+    <li><em>Unbelievable.  No entries here so far</em></li>
+  {% endfor %}
+  </ul>
+<hr>
+<p>
+<form >
+    <label for="inputName"">Company</label>
+    <input type="name" name="inputCompany" id="seems_id_not_used_in_this_ajax_inputName" placeholder="Company" required autofocus>
+
+    <button id="btnSignUp" type="button">Add new company</button>
+</form>
+<hr>
+</p>
+
+{% endblock %}
+
+    <form action="{{ url_for('company_add') }}" method="post">
+      <dl>
+        <dt>Company title:
+        <dd><input type="text" size="30" name="title">
+        <dd><input type="submit" value="Add company">
+      </dl>
+    </form>
+
+
+/* */
+
+  {% if session.logged_in %}
+    <form action="{{ url_for('add_entry') }}" method="post" class="add-entry">
+      <dl>
+        <dt>Company title:
+        <dd><input type="text" size="30" name="title">
+        <dd><input type="submit" value="Add company">
+      </dl>
+    </form>
+  {% endif %}
+
+<form class="form-signin">
+        <label for="inputName" class="sr-only">Name</label>
+        <input type="name" name="inputName" id="inputName" class="form-control" placeholder="Name" required autofocus>
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input type="email" name="inputEmail" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Password" required>
+
+        <button id="btnSignUp" class="btn btn-lg btn-primary btn-block" type="button">Sign up</button>
+      </form>

@@ -16,6 +16,8 @@ def signUp():
 def signUpUser():
     user =  request.form['username'];
     password = request.form['password'];
+    print('DBG request.method {} user {} password {}'.format(request.method, user, password))
+    # >>> DBG request.method POST user a@a.ab.com password abcom
     return json.dumps({'status':'OK','user':user,'pass':password});
 
 
