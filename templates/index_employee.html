@@ -1,0 +1,23 @@
+{% extends "layout-flask-002.html" %}
+{% block body %}
+
+<ul class="entries">
+  {% for entry in entries %}
+    <li><a href="/employee/{{ entry.id }}"> {{ entry.id }} - {{ entry.name|safe }} $ {{ entry.salary|safe }}</a></li>
+  {% else %}
+    <li><em>Unbelievable.  No entries here so far</em></li>
+  {% endfor %}
+  </ul>
+<hr>
+
+<form action="{{ url_for('show_employee') }}" method="post">
+  <dl>
+    <dt>New employee:
+    <dd>Name<input type="text" size="30" name="name">
+     <dd>Salary<input type="text" size="30" name="salary">
+     <dd>company_id, placeholder for drop-down<input type="text" size="30" name="company_id">
+    <dd><input type="submit" value="Add employee">
+  </dl>
+</form>
+
+{% endblock %}
